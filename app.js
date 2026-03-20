@@ -55,12 +55,20 @@ function handleSubmit(e) {
 
 // VIDEO SYSTEM
 const source_folder = "assets/video/"
-const videoSources = {
-    'orbital': { src: `${source_folder}orbital_click_demo.mp4`, type: 'video/mp4' },
-    'clip': { src: `${source_folder}clip_notes_demo.mp4`, type: 'video/mp4' },
-    'commands': { src: `${source_folder}commands_builder_demo.mp4`, type: 'video/mp4' },
-    'git': { src: `${source_folder}easy_git_demo.mp4`, type: 'video/mp4' }
-};
+const source_suffix = ".mp4"
+const source_type = "video/mp4"
+// const videoSources = {
+//     'orbital': { src: `${source_folder}orbital${source_suffix}`, type: source_type },
+//     'clip': { src: `${source_folder}clip${source_suffix}`, type: source_type },
+//     'commands': { src: `${source_folder}commands${source_suffix}`, type: source_type },
+//     'rf_controls': { src: `${source_folder}rf_controls${source_suffix}`, type: source_type },
+//     'rf_doc': { src: `${source_folder}rf_doc${source_suffix}`, type: source_type },
+//     'git': { src: `${source_folder}git${source_suffix}`, type: source_type }
+// };
+const videoSources = Object.fromEntries(
+  ['orbital', 'clip', 'commands', 'rf_controls', 'rf_doc', 'git']
+    .map(k => [k, { src: `assets/video/${k}.mp4`, type: "video/mp4" }])
+);
 
 // Video button handlers - only the "Démo" button triggers video
 document.querySelectorAll('.project-card.has-video').forEach(card => {
