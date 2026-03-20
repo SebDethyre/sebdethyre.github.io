@@ -54,10 +54,11 @@ function handleSubmit(e) {
 }
 
 // VIDEO SYSTEM
+const source_folder = "assets/video/"
 const videoSources = {
-    'orbital': { src: 'orbital_click_demo.webm', type: 'video/webm' },
-    'clip': { src: 'clip_notes_demo.mp4', type: 'video/mp4' },
-    'commands': { src: 'commands_builder_demo.webm', type: 'video/webm' }
+    'orbital': { src: `${source_folder}orbital_click_demo.mp4`, type: 'video/mp4' },
+    'clip': { src: `${source_folder}clip_notes_demo.mp4`, type: 'video/mp4' },
+    'commands': { src: `${source_folder}commands_builder_demo.mp4`, type: 'video/mp4' }
 };
 
 // Video button handlers - only the "Démo" button triggers video
