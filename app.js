@@ -58,7 +58,8 @@ const source_folder = "assets/video/"
 const videoSources = {
     'orbital': { src: `${source_folder}orbital_click_demo.mp4`, type: 'video/mp4' },
     'clip': { src: `${source_folder}clip_notes_demo.mp4`, type: 'video/mp4' },
-    'commands': { src: `${source_folder}commands_builder_demo.mp4`, type: 'video/mp4' }
+    'commands': { src: `${source_folder}commands_builder_demo.mp4`, type: 'video/mp4' },
+    'git': { src: `${source_folder}easy_git_demo.mp4`, type: 'video/mp4' }
 };
 
 // Video button handlers - only the "Démo" button triggers video
