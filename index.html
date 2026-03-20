@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sébastien Dethyre | Développeur Full-Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="orbital-bg">
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+    </div>
+
+    <div class="nav-container" id="navbar">
+        <nav>
+            <div class="logo">SD</div>
+            <ul class="nav-links">
+                <li><a href="#accueil" class="active">Accueil</a></li>
+                <li><a href="#realisations">Réalisations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section id="accueil">
+        <div class="section-content">
+            <div class="main-container">
+                <div class="main-text">
+                    <span class="main-subtitle">// Développeur Full-Stack & Test Automation</span>
+                    <h1 class="main-title">Sébastien<br><span>Dethyre</span></h1>
+                    <p class="main-description">Créateur d'outils innovants qui simplifient la vie des développeurs. Passionné par l'automatisation, les interfaces intuitives et les défis techniques impossibles.</p>
+                    <div class="main-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">JAVA</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Robot Framework</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#realisations" class="btn btn-primary">Mes Projets</a>
+                        <a href="https://github.com/SebDethyre" target="_blank" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+                <div class="main-visual">
+                    <div class="avatar-ring">
+                        <div class="avatar-photo">
+                            <img src="tete.jpg" alt="Sébastien Dethyre">
+                        </div>
+                    </div>
+                    <div class="kungfu-badge">
+                        <img src="jaune.jpg" alt="Kung Fu">
+                    </div>
+                </div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">⚡</div>
+                    <h3>Innovation</h3>
+                    <p>Je conçois des outils qui n'existent pas encore. Interfaces orbitales sous Wayland, clipboards nouvelle génération, extensions Robot Framework inédites.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🎯</div>
+                    <h3>4+ Ans d'Expérience</h3>
+                    <p>Développement full-stack et solutions open-source pour les administrations françaises. De l'alternance web à l'expertise en automatisation de tests.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🧘</div>
+                    <h3>Discipline & Équilibre</h3>
+                    <p>Le kung fu m'enseigne la patience, la précision et la persévérance. Des qualités que j'applique quotidiennement dans mon code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="realisations">
+        <div class="section-content">
+            <div class="section-header">
+                <span class="section-label">// Portfolio</span>
+                <h2 class="section-title">Mes Réalisations</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card project-featured has-video" data-video-id="orbital">
+                    <video class="project-video-preview" muted loop playsinline>
+                        <source src="orbital_click_demo.webm" type="video/webm">
+                    </video>
+                    <span class="video-label">▶ Démo</span>
+                    <span class="video-hint">Clic → plein écran</span>
+                    <div class="project-header">
+                        <div class="project-icon">🔄</div>
+                        <div>
+                            <h3 class="project-title">orbitalClick</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">UI/UX</span>
+                                <span class="tech-tag">GTk/GLX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Une interface futuriste sans fenêtre, composée de sphères orbitales assignables à des actions. Les sphères orbitent à différentes vitesses selon la position de la souris.</p>
+                        <a href="https://github.com/SebDethyre/orbitalClick" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card has-video" data-video-id="clip">
+                    <video class="project-video-preview" muted loop playsinline>
+                        <source src="clip_notes_demo.mp4" type="video/mp4">
+                    </video>
+                    <span class="video-label">▶ Démo</span>
+                    <span class="video-hint">Clic → plein écran</span>
+                    <div class="project-header">
+                        <div class="project-icon">📋</div>
+                        <h3 class="project-title">clipNotes</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Wayland</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Gestionnaire de presse-papier nouvelle génération qui apparaît instantanément autour du curseur — une prouesse technique réputée impossible sous Wayland. Fini les allers-retours.</p>
+                        <a href="https://github.com/SebDethyre/clip_notes" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card has-video" data-video-id="commands">
+                    <video class="project-video-preview" muted loop playsinline>
+                        <source src="commands_builder_demo.webm" type="video/webm">
+                    </video>
+                    <span class="video-label">▶ Démo</span>
+                    <span class="video-hint">Clic → plein écran</span>
+                    <div class="project-header">
+                        <div class="project-icon">💻</div>
+                        <h3 class="project-title">commandsBuilderDialog</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Education</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Outil pédagogique ergonomique pour apprendre les commandes Linux. Recherchez et explorez toutes les commandes de manière interactive.</p>
+                        <a href="https://github.com/SebDethyre/commandsBuilderDialog" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3 class="project-title">robotFrameworkDoc</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">DevTools</span>
+                            <span class="tech-tag">Robot Framework</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Toute la documentation Robot Framework dans une interface intuitive. Pause d'exécution, outils de debug avancés.</p>
+                        <a href="https://github.com/SebDethyre/robotFrameworkCompleteDoc" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <h3 class="project-title">dashDev</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">DevTools</span>
+                            <span class="tech-tag">GTk</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Application de gestion de développements : implémentation, versioning, visualisation et debug tout-en-un.</p>
+                        <a href="https://github.com/SebDethyre/dashDev" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🌿</div>
+                        <h3 class="project-title">easyGit</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Shell</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">Zenity</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Application légère permettant toutes les opérations Git essentielles en un clin d'œil et d'une seule main.</p>
+                        <a href="https://github.com/SebDethyre/easyGit" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔀</div>
+                        <h3 class="project-title">mergeBranches</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">SVN (Subversion)</span>
+                            <span class="tech-tag">GTk</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Une interface graphique pour faciliter les merges de branches avec Subversion</p>
+                        <a href="https://github.com/SebDethyre/easyGit" target="_blank" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-content">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Travaillons <span>ensemble</span></h2>
+                    <p>Vous avez un projet innovant ? Une idée d'outil qui n'existe pas encore ? Ou simplement envie d'échanger ?</p>
+                    <div class="contact-details">
+                        <a href="mailto:dethyres@hotmail.fr" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6L12 13 2 6"/></svg>
+                            dethyres@hotmail.fr
+                        </a>
+                        <a href="tel:+33662084733" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            06 62 08 47 33
+                        </a>
+                        <a href="https://github.com/SebDethyre" target="_blank" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            github.com/SebDethyre
+                        </a>
+                        <span class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Martigues, France
+                        </span>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Votre message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/SebDethyre" target="_blank" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:dethyres@hotmail.fr" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6L12 13 2 6"/></svg>
+                </a>
+            </div>
+            <p class="copyright">© 2026 Sébastien Dethyre — Conçu avec passion</p>
+        </div>
+    </footer>
+
+    <div class="video-modal" id="videoModal">
+        <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+        <video id="modalVideo" controls>
+            <source id="modalVideoSource" src="" type="">
+        </video>
+    </div>
+</body>
+</html>
