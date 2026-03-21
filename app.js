@@ -7,16 +7,28 @@ let navClickedRecently = false;
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
+// Check if mobile view
+const isMobile = () => window.innerWidth <= 768;
+
+// Ensure navbar is visible on mobile (including on resize)
+window.addEventListener('resize', () => {
+    if (isMobile()) {
+        navbar.classList.remove('hidden');
+    }
+});
+
 // Scroll: hide/show navbar + update active link
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     navbar.classList.toggle('scrolled', currentScroll > 50);
     
-    // Hide on scroll down, show on scroll up (unless nav was just clicked)
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        navbar.classList.add('hidden');
-    } else if (!navClickedRecently) {
-        navbar.classList.remove('hidden');
+    // Hide on scroll down, show on scroll up (unless nav was just clicked) - desktop only
+    if (!isMobile()) {
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            navbar.classList.add('hidden');
+        } else if (!navClickedRecently) {
+            navbar.classList.remove('hidden');
+        }
     }
     lastScroll = currentScroll;
 
@@ -38,8 +50,10 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Show navbar when mouse near top (but not right after a nav click)
+// Show navbar when mouse near top (but not right after a nav click) - desktop only
 document.addEventListener('mousemove', (e) => {
+    if (isMobile()) return;
+    
     if (e.clientY >= 80) {
         navClickedRecently = false;
     }
@@ -65,9 +79,11 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         navToggle?.classList.remove('active');
         navLinksContainer?.classList.remove('active');
         
-        // Hide navbar and block reappearance until mouse leaves top zone
-        navClickedRecently = true;
-        navbar.classList.add('hidden');
+        // Hide navbar and block reappearance until mouse leaves top zone (desktop only)
+        if (!isMobile()) {
+            navClickedRecently = true;
+            navbar.classList.add('hidden');
+        }
         
         document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
