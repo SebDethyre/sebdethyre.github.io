@@ -87,6 +87,47 @@ nav {
     background-clip: text; 
 }
 
+/* NAV TOGGLE (HAMBURGER) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(212, 168, 75, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s;
+}
+
+.nav-toggle:hover {
+    border-color: var(--accent-gold);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: all 0.3s;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 .nav-links { display: flex; gap: 3rem; list-style: none; }
 
 .nav-links a { 
@@ -433,7 +474,7 @@ section {
     left: 0; 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; 
+    object-fit: fill; 
     opacity: 0; 
     transition: opacity 0.4s; 
     z-index: 10; 
@@ -473,6 +514,31 @@ section {
     box-shadow: var(--shadow-gold);
 }
 
+/* Bouton Stop - en haut à gauche */
+.video-stop { 
+    position: absolute; 
+    top: 15px; 
+    left: 15px; 
+    background: rgba(0,0,0,0.85); 
+    color: var(--text-primary); 
+    padding: 0.4rem 0.8rem; 
+    border-radius: 4px; 
+    font-size: 0.75rem; 
+    font-weight: 600;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    opacity: 0; 
+    pointer-events: none;
+    transition: all 0.3s; 
+    z-index: 16; 
+    cursor: pointer;
+}
+
+.video-stop:hover {
+    background: #cc3333;
+    color: var(--text-primary);
+}
+
 /* Hint visible quand vidéo joue - aussi cliquable pour plein écran */
 .video-hint { 
     position: absolute; 
@@ -483,9 +549,12 @@ section {
     padding: 0.4rem 0.8rem; 
     border-radius: 4px; 
     font-size: 0.75rem; 
+    font-weight: 600;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
     opacity: 0; 
     pointer-events: none;
-    transition: opacity 0.3s; 
+    transition: all 0.3s; 
     z-index: 16; 
     cursor: pointer;
 }
@@ -497,6 +566,7 @@ section {
 
 .project-card.has-video.playing .video-label { opacity: 0; pointer-events: none; }
 .project-card.has-video.playing .video-hint { opacity: 1; pointer-events: auto; }
+.project-card.has-video.playing .video-stop { opacity: 1; pointer-events: auto; }
 
 /* VIDEO MODAL */
 .video-modal { 
@@ -702,8 +772,108 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    /* Fix overflow */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    section {
+        padding: 6rem 1rem 3rem;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+    
+    /* Hamburger visible */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    /* Menu mobile */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s var(--transition-smooth);
+        border-left: 1px solid rgba(212, 168, 75, 0.2);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+    
     .avatar-ring { width: 250px; height: 250px; }
-    .projects-grid { grid-template-columns: 1fr; }
+    
+    .projects-grid { 
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        min-height: 280px;
+    }
+    
     .footer-content { flex-direction: column; gap: 1rem; }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .contact-info h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .main-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .avatar-ring { 
+        width: 200px; 
+        height: 200px; 
+    }
+    
+    .kungfu-badge {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .project-header {
+        padding: 1.5rem;
+    }
+    
+    .project-body {
+        padding: 1rem 1.5rem 1.5rem;
+    }
 }

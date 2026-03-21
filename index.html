@@ -21,6 +21,11 @@
     <div class="nav-container" id="navbar">
         <nav>
             <div class="logo">SD</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#accueil" class="active">Accueil</a></li>
                 <li><a href="#realisations">Réalisations</a></li>
@@ -95,6 +100,7 @@
                         <source src="assets/video/orbital.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">🔄</div>
@@ -118,6 +124,7 @@
                         <source src="assets/video/clip.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">📋</div>
@@ -140,6 +147,7 @@
                         <source src="assets/video/commands.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">💻</div>
@@ -161,6 +169,7 @@
                         <source src="assets/video/rf_controls.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">🤖</div>
@@ -183,6 +192,7 @@
                         <source src="assets/video/rf_doc.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">🤖</div>
@@ -195,7 +205,7 @@
                         </div>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Toute la documentation Robot Framework est accessible via une interface intuitive. Les définitions des Keywords peuvent être consultées depuis les Test Suites jusqu’aux bibliothèques natives (avec un accès complet), mais aussi via un champ de recherche de type « chosen » qui suggère dynamiquement les Keywords existants en fonction de la saisie de l’utilisateur.</p>
+                        <p class="project-description">Toute la documentation Robot Framework est accessible via une interface intuitive. Les définitions des Keywords peuvent être consultées depuis les Test Suites jusqu'aux bibliothèques natives (avec un accès complet), mais aussi via un champ de recherche de type « chosen » qui suggère dynamiquement les Keywords existants en fonction de la saisie de l'utilisateur.</p>
                         <a href="https://github.com/SebDethyre/robotFrameworkCompleteDoc" target="_blank" class="project-link">Voir sur GitHub →</a>
                     </div>
                 </div>
@@ -241,6 +251,7 @@
                         <source src="assets/video/git.mp4" type="video/mp4">
                     </video>
                     <span class="video-label">▶ Démo</span>
+                    <span class="video-stop">Stop</span>
                     <span class="video-hint">Plein écran</span>
                     <div class="project-header">
                         <div class="project-icon">🌿</div>
@@ -322,7 +333,7 @@
     <div class="video-modal" id="videoModal">
         <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
         <video id="modalVideo" controls>
-            <source id="modalVideoSource" src="" type="">
+            <source id="modalVideoSource" src="" type="video/mp4">
         </video>
     </div>
 </body>

@@ -1,5 +1,7 @@
 // NAVIGATION
 const navbar = document.getElementById('navbar');
+const navToggle = document.getElementById('navToggle');
+const navLinksContainer = document.querySelector('.nav-links');
 let lastScroll = 0;
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -34,14 +36,35 @@ document.addEventListener('mousemove', (e) => {
     if (e.clientY < 80) navbar.classList.remove('hidden');
 });
 
-// Smooth scroll on nav click
+// Mobile menu toggle
+navToggle?.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinksContainer.classList.toggle('active');
+});
+
+// Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         navLinks.forEach(l => l.classList.remove('active'));
         this.classList.add('active');
+        
+        // Close mobile menu
+        navToggle?.classList.remove('active');
+        navLinksContainer?.classList.remove('active');
+        
         document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
+});
+
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+    if (navLinksContainer?.classList.contains('active') && 
+        !e.target.closest('.nav-links') && 
+        !e.target.closest('.nav-toggle')) {
+        navToggle?.classList.remove('active');
+        navLinksContainer?.classList.remove('active');
+    }
 });
 
 // CONTACT FORM
@@ -57,25 +80,18 @@ function handleSubmit(e) {
 const source_folder = "assets/video/"
 const source_suffix = ".mp4"
 const source_type = "video/mp4"
-// const videoSources = {
-//     'orbital': { src: `${source_folder}orbital${source_suffix}`, type: source_type },
-//     'clip': { src: `${source_folder}clip${source_suffix}`, type: source_type },
-//     'commands': { src: `${source_folder}commands${source_suffix}`, type: source_type },
-//     'rf_controls': { src: `${source_folder}rf_controls${source_suffix}`, type: source_type },
-//     'rf_doc': { src: `${source_folder}rf_doc${source_suffix}`, type: source_type },
-//     'git': { src: `${source_folder}git${source_suffix}`, type: source_type }
-// };
 const videoSources = Object.fromEntries(
   ['orbital', 'clip', 'commands', 'rf_controls', 'rf_doc', 'git']
     .map(k => [k, { src: `assets/video/${k}.mp4`, type: "video/mp4" }])
 );
 
-// Video button handlers - only the "Démo" button triggers video
+// Video button handlers
 document.querySelectorAll('.project-card.has-video').forEach(card => {
     const video = card.querySelector('.project-video-preview');
     const videoId = card.dataset.videoId;
     const demoBtn = card.querySelector('.video-label');
     const hintBtn = card.querySelector('.video-hint');
+    const stopBtn = card.querySelector('.video-stop');
 
     // Click on "▶ Démo" button = play video
     demoBtn?.addEventListener('click', (e) => {
@@ -98,12 +114,20 @@ document.querySelectorAll('.project-card.has-video').forEach(card => {
         openVideoModal(videoId);
     });
 
+    // Click on stop button = pause and return to card
+    stopBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.pause();
+        card.classList.remove('playing');
+    });
+
     // Click anywhere else on the card when playing = pause
     card.addEventListener('click', (e) => {
-        // Ignore clicks on links, demo button, and fullscreen hint
+        // Ignore clicks on links, demo button, fullscreen hint, and stop button
         if (e.target.closest('.project-link') ||
             e.target.closest('.video-label') || 
-            e.target.closest('.video-hint')) {
+            e.target.closest('.video-hint') ||
+            e.target.closest('.video-stop')) {
             return;
         }
         
