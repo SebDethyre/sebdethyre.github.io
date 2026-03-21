@@ -33,7 +33,7 @@ window.addEventListener('scroll', () => {
 
 // Show navbar when mouse near top
 document.addEventListener('mousemove', (e) => {
-    if (e.clientY < 80) navbar.classList.remove('hidden');
+    if (e.clientY < 45) navbar.classList.remove('hidden');
 });
 
 // Mobile menu toggle
