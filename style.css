@@ -679,7 +679,7 @@ section {
 }
 
 .video-hint-msg.show {
-    animation: fadeOutIndicator 5s ease-out forwards;
+    animation: fadeOutIndicator 3.5s ease-out forwards;
 }
 
 /* VIDEO MODAL */

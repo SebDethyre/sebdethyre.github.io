@@ -3,6 +3,7 @@ const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('navToggle');
 const navLinksContainer = document.querySelector('.nav-links');
 let lastScroll = 0;
+let navClickedRecently = false;
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -10,7 +11,13 @@ const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     navbar.classList.toggle('scrolled', currentScroll > 50);
-    navbar.classList.toggle('hidden', currentScroll > lastScroll && currentScroll > 100);
+    
+    // Hide on scroll down, show on scroll up (unless nav was just clicked)
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        navbar.classList.add('hidden');
+    } else if (!navClickedRecently) {
+        navbar.classList.remove('hidden');
+    }
     lastScroll = currentScroll;
 
     // Update active nav link based on scroll position
@@ -31,9 +38,14 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Show navbar when mouse near top
+// Show navbar when mouse near top (but not right after a nav click)
 document.addEventListener('mousemove', (e) => {
-    if (e.clientY < 45) navbar.classList.remove('hidden');
+    if (e.clientY >= 80) {
+        navClickedRecently = false;
+    }
+    if (e.clientY < 80 && !navClickedRecently) {
+        navbar.classList.remove('hidden');
+    }
 });
 
 // Mobile menu toggle
@@ -52,6 +64,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         // Close mobile menu
         navToggle?.classList.remove('active');
         navLinksContainer?.classList.remove('active');
+        
+        // Hide navbar and block reappearance until mouse leaves top zone
+        navClickedRecently = true;
+        navbar.classList.add('hidden');
         
         document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
