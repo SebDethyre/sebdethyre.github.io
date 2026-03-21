@@ -481,6 +481,23 @@ section {
     border-radius: 12px; 
 }
 
+/* Masquer les contrôles natifs du navigateur */
+.project-video-preview::-webkit-media-controls {
+    display: none !important;
+}
+
+.project-video-preview::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.project-video-preview::-webkit-media-controls-picture-in-picture-button {
+    display: none !important;
+}
+
+.project-video-preview::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+}
+
 .project-card.has-video.playing .project-video-preview { opacity: 1; }
 
 .project-card.has-video.playing .project-header,
@@ -567,6 +584,100 @@ section {
 .project-card.has-video.playing .video-label { opacity: 0; pointer-events: none; }
 .project-card.has-video.playing .video-hint { opacity: 1; pointer-events: auto; }
 .project-card.has-video.playing .video-stop { opacity: 1; pointer-events: auto; }
+
+/* Indicateur pause/play en bas à gauche */
+.video-indicator {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--text-primary);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 16;
+    transition: opacity 0.4s ease-out;
+}
+
+.video-indicator::before {
+    content: '';
+}
+
+/* État pause : affiche II */
+.project-card.has-video.paused .video-indicator {
+    opacity: 1;
+}
+
+.project-card.has-video.paused .video-indicator::before {
+    content: '❚❚';
+    letter-spacing: 2px;
+}
+
+/* État play fugace : affiche ▶ puis disparaît */
+.project-card.has-video.playing .video-indicator.show-play {
+    opacity: 1;
+    animation: fadeOutIndicator 0.8s ease-out forwards;
+}
+
+.project-card.has-video.playing .video-indicator.show-play::before {
+    content: '▶';
+}
+
+@keyframes fadeOutIndicator {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Message hint au démarrage */
+.video-hint-msg {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.7);
+    color: var(--text-primary);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 16;
+    white-space: nowrap;
+}
+
+/* Curseur main sur vidéo en lecture */
+.project-card.has-video.playing .project-video-preview {
+    cursor: pointer;
+}
+
+/* Message hint "Click : Pause" au démarrage */
+.video-hint-msg {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.7);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 16;
+    white-space: nowrap;
+}
+
+.video-hint-msg.show {
+    animation: fadeOutIndicator 5s ease-out forwards;
+}
 
 /* VIDEO MODAL */
 .video-modal { 

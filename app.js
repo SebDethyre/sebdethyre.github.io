@@ -92,6 +92,8 @@ document.querySelectorAll('.project-card.has-video').forEach(card => {
     const demoBtn = card.querySelector('.video-label');
     const hintBtn = card.querySelector('.video-hint');
     const stopBtn = card.querySelector('.video-stop');
+    const indicator = card.querySelector('.video-indicator');
+    const hintMsg = card.querySelector('.video-hint-msg');
 
     // Click on "▶ Démo" button = play video
     demoBtn?.addEventListener('click', (e) => {
@@ -99,13 +101,20 @@ document.querySelectorAll('.project-card.has-video').forEach(card => {
         // Pause other videos
         document.querySelectorAll('.project-card.has-video.playing').forEach(other => {
             if (other !== card) {
-                other.classList.remove('playing');
+                other.classList.remove('playing', 'paused');
                 other.querySelector('.project-video-preview')?.pause();
+                other.querySelector('.video-indicator')?.classList.remove('show-play');
+                other.querySelector('.video-hint-msg')?.classList.remove('show');
             }
         });
         video.currentTime = 0;
         video.play();
         card.classList.add('playing');
+        card.classList.remove('paused');
+        // Show hint message
+        hintMsg?.classList.remove('show');
+        void hintMsg?.offsetWidth; // Force reflow
+        hintMsg?.classList.add('show');
     });
 
     // Click on hint (when video is playing) = fullscreen
@@ -118,10 +127,20 @@ document.querySelectorAll('.project-card.has-video').forEach(card => {
     stopBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         video.pause();
-        card.classList.remove('playing');
+        card.classList.remove('playing', 'paused');
+        indicator?.classList.remove('show-play');
+        hintMsg?.classList.remove('show');
     });
 
-    // Click anywhere else on the card when playing = pause
+    // Double-click on video = fullscreen
+    video?.addEventListener('dblclick', (e) => {
+        e.stopPropagation();
+        if (card.classList.contains('playing')) {
+            openVideoModal(videoId);
+        }
+    });
+
+    // Click anywhere else on the card when playing = toggle pause/play
     card.addEventListener('click', (e) => {
         // Ignore clicks on links, demo button, fullscreen hint, and stop button
         if (e.target.closest('.project-link') ||
@@ -132,8 +151,18 @@ document.querySelectorAll('.project-card.has-video').forEach(card => {
         }
         
         if (card.classList.contains('playing')) {
-            video.pause();
-            card.classList.remove('playing');
+            if (video.paused) {
+                video.play();
+                card.classList.remove('paused');
+                // Show play indicator briefly
+                indicator?.classList.remove('show-play');
+                void indicator?.offsetWidth; // Force reflow
+                indicator?.classList.add('show-play');
+            } else {
+                video.pause();
+                card.classList.add('paused');
+                indicator?.classList.remove('show-play');
+            }
         }
     });
 });
