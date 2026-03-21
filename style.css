@@ -164,7 +164,7 @@ section {
     min-height: 100vh; 
     padding: 8rem 2rem 4rem; 
     position: relative; 
-    z-index: 1; 
+    z-index: 1;
 }
 
 .section-content { max-width: 1200px; margin: 0 auto; }
@@ -371,7 +371,10 @@ section {
 }
 
 /* REALISATIONS */
-#realisations { background: var(--bg-secondary); }
+#realisations { 
+    background: var(--bg-secondary); 
+    scroll-margin-top: -60px;
+}
 
 .projects-grid { 
     display: grid; 
